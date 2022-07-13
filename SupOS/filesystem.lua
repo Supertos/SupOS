@@ -5,8 +5,14 @@
 	Manages loading files and stuff
 --]]
 
-cmp = require "component"
-pc = require "computer"
+local cmp = require "component"
+local pc = require "computer"
+
+local bootdrive = pc.getBootAddress()
+
+local Drives = {}
+
+
 function getDrives()
 	local list = cmp.list()
 	local drives = {}
@@ -18,4 +24,13 @@ function getDrives()
 	end
 	return list
 	
+end
+
+function isBootDrive( adr )
+	return adr == bootdrive
+end
+
+function registerDrive( adr, letter )
+	Drives[ adr ] = letter
+
 end
