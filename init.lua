@@ -22,6 +22,6 @@ end
 
 do	
 
-  loadfile("/OpenOS/startup.lua")(loadfile)
+  loadfile("/SupOS/startup.lua")(loadfile)
   
 end
