@@ -5,7 +5,7 @@
 	Manages multitasking
 --]]
 
-local TASKS = {}
+local SUPOS_TASKS = {}
 
 
 function NewTask( Path )
@@ -13,9 +13,6 @@ function NewTask( Path )
 
 	
 end
-
-
-
 
 
 
