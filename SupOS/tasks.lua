@@ -7,6 +7,11 @@
 
 local SUPOS_TASKS = {}
 
+local function LoadTask( Path )
+	
+
+end
+
 
 function NewTask( Path )
 	
