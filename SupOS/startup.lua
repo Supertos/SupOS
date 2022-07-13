@@ -7,7 +7,7 @@
 
 local addr, invoke = computer.getBootAddress(), component.invoke
 
-local function loadfile(file)
+local function include(file)
 	local handle = assert(invoke(addr, "open", file))
 	local buffer = ""
 	local data = ""
@@ -17,9 +17,18 @@ local function loadfile(file)
     until not data
 	
 	invoke(addr, "close", handle)
-	return load(buffer, "=" .. file, "bt", _G)
+	load(buffer, "=" .. file, "bt", _G)()
 end
 
-loadfile("/SupOS/filesystem.lua")()
+include("/SupOS/filesystem.lua")
 
-loadfile("/SupOS/tasks.lua")()
+--error( loadFile )
+
+include("/SupOS/tasks.lua")
+
+NewTask( "C:/Program Files/SupOS Window Controller/init.lua" )
+
+while true do
+	DoTasks()
+	coroutine.yield()
+end

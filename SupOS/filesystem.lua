@@ -42,6 +42,7 @@ end
 function loadFile( path )
 
 	local drive, path = translatePath( path )
+	
 	local handle = cmp.invoke(drive, "open", path)
 	
 	if not handle then return "" end
@@ -54,8 +55,13 @@ function loadFile( path )
 		buffer = buffer .. (data or "")
     until not data
 	
-	invoke(drive, "close", handle)
-	return data
+	cmp.invoke(drive, "close", handle)
+	return buffer
 
 
 end
+
+function include( path )
+	load( loadFile( path ), "=" .. file, "bt", _G )()
+end
+

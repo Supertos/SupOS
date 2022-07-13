@@ -10,20 +10,26 @@ local SUPOS_TASKS = {}
 
 
 function NewTask( Path )
-	local task = load( loadfile( Path ) )
 	
-	SUPOS_TASKS[#SUPOS_TASKS + 1] = coroutine.create( task ) 
-
+	local task = load( loadFile( Path ) )
 	
+	SUPOS_TASKS[#SUPOS_TASKS + 1] = coroutine.create( task )
+	
+	assert( coroutine.resume( SUPOS_TASKS[#SUPOS_TASKS] ), "Fuck you too!")
 end
 
-while true do
-	for id, task in ipairs( SUPOS_TASKS ) do
-		pcall( coroutine.resume, task )
+function DoTasks( )
+	
+	for i = 1, #SUPOS_TASKS, 1 do
+		if coroutine.status( SUPOS_TASKS[i] ) == "dead" then
+			table.remove( SUPOS_TASKS, i )
+			error("Dead thread!")
+		end
 	end
-	coroutine.yield()
+	
+	for id, task in ipairs( SUPOS_TASKS ) do
+		assert( coroutine.resume( task ), "Dead man found!")
+	end
 end
-
-
 
 
