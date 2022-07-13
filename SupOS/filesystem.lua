@@ -46,9 +46,11 @@ function loadFile( path )
 	
 	if not handle then return "" end
 	
+	
 	local buffer = ""
+	local data = ""
 	repeat
-		local data = cmp.invoke(drive, "read", handle, math.huge)
+		data = cmp.invoke(drive, "read", handle, math.huge)
 		buffer = buffer .. (data or "")
     until not data
 	

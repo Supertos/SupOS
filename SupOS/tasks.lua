@@ -7,14 +7,12 @@
 
 local SUPOS_TASKS = {}
 
-local function LoadTask( Path )
-	
-
-end
 
 
 function NewTask( Path )
+	local task = load( loadfile( Path ) )
 	
+	SUPOS_TASKS[#SUPOS_TASKS + 1] = coroutine.create( task ) 
 
 	
 end
