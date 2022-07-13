@@ -19,5 +19,5 @@ local function loadfile(file)
 	return load(buffer, "=" .. file, "bt", _G)
 end
 
-loadfile("/SupOS/startup.lua")(loadfile)
+loadfile("/SupOS/startup.lua")()
  
