@@ -17,7 +17,11 @@ function NewTask( Path )
 	
 end
 
-
+while true do
+	for id, task in ipairs( SUPOS_TASKS ) do
+		pcall( task.resume() )
+	end
+end
 
 
 
