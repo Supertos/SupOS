@@ -31,6 +31,9 @@ function isBootDrive( adr )
 end
 
 function registerDrive( adr, letter )
-	Drives[ adr ] = letter
+	Drives[ letter ] = adr
+end
 
+function translatePath( path )
+	return Drives[ string.sub( path, 1, 1 ) ], string.sub( path, 3, string.len( path ) )
 end
