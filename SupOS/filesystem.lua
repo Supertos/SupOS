@@ -5,8 +5,8 @@
 	Manages loading files and stuff
 --]]
 
-local cmp = require "component"
-local pc = require "computer"
+pc = computer
+cmp = component
 
 local bootdrive = pc.getBootAddress()
 
@@ -19,7 +19,7 @@ function getDrives()
 	local drives = {}
 	
 	for adr, type in pairs( list ) do
-		if type == "drive" then
+		if type == "filesystem" then
 			drives[ #drives + 1 ] = adr
 		end
 	end

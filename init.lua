@@ -4,8 +4,6 @@
 	Generic startup file in OpenComputers
 --]]
 
-local computer = require "component"
-local component = require "computer"
 
 local addr, invoke = computer.getBootAddress(), component.invoke
 
