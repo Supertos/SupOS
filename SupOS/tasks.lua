@@ -19,8 +19,9 @@ end
 
 while true do
 	for id, task in ipairs( SUPOS_TASKS ) do
-		pcall( task.resume() )
+		pcall( coroutine.resume, task )
 	end
+	coroutine.yield()
 end
 
 

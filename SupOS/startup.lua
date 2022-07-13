@@ -4,6 +4,8 @@
 	This file initializes SupOS
 --]]
 
+loadfile = nil
+
 require("filesystem")
 
 require("device")
