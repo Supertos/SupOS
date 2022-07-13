@@ -5,8 +5,8 @@
 	Manages loading files and stuff
 --]]
 
-pc = computer
-cmp = component
+local pc = computer
+local cmp = component
 
 local bootdrive = pc.getBootAddress()
 
